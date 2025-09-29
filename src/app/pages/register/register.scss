@@ -1,0 +1,75 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #eef2f7;
+}
+
+.register-box {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #0077ff;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+button:hover:enabled {
+  background-color: #005fcc;
+}
+
+button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+button[type="button"] {
+  background-color: transparent;
+  color: #0077ff;
+  border: 1px solid #0077ff;
+  margin-top: 1rem;
+}
+
+button[type="button"]:hover {
+  background-color: #f8f9fa;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin-bottom: 0.8rem;
+  text-align: left;
+}

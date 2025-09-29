@@ -1,0 +1,49 @@
+<div class="game-container">
+  @if (!gameStarted()) {
+    <div class="overlay">
+      <p>Looking for game...</p>
+      <div class="spinner"></div>
+    </div>
+  }
+
+  @if (gameStarted()) {
+    <div class="game-board" [class.disabled]="!gameStarted">
+    <h2>Wordle Duels</h2>
+    <div class="guesses">
+      @for (guess of pastGuesses(); track guess.guessWord) {
+      <div class="guess">
+        @for (letter of guess.letters; track $index) {
+        <span class="letter" [ngClass]="letter.color.toLowerCase()">
+          {{ letter.char }}
+        </span>
+        }
+      </div>
+      }
+    </div>
+    @if(turn()) {
+      <p>Your turn to guess!</p>
+      <div class="input-area">
+      <input [(ngModel)]="currentGuess" maxlength="5" placeholder="Enter your guess" />
+      <button (click)="submitGuess()">Submit</button>
+    </div>
+    } @else {
+      <p>Waiting for opponent's guess...</p>
+    }
+    <div *ngIf="gameMessage()" class="message">
+      {{ gameMessage() }}
+    </div>
+    <div class="controls">
+      <button (click)="resignGame()">Resign</button>
+    </div>
+
+    @if (gameEnded()) {
+      <div class="overlay">
+        <p>Game Over!</p>
+        <div class="message">{{ gameMessage() }}</div>
+        <button (click)="endGame()">Exit</button>
+      </div>
+    }
+  </div>
+  }
+  
+</div>

@@ -1,0 +1,10 @@
+<div class="home-container">
+  <h1>Welcome, {{ userDetails()?.userName }}!</h1>
+  <p><strong>Email:</strong> {{ userDetails()?.email }}</p>
+  <p><strong>Elo:</strong> {{ userDetails()?.elo }}</p>
+  <button (click)="startGame()">Start Game</button>
+</div>
+
+<ng-template #loading>
+  <p>Loading user data...</p>
+</ng-template>

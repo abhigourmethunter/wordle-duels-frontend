@@ -1,0 +1,54 @@
+<div class="register-container">
+    <div class="register-box">
+        <h2>Register</h2>
+        <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+            <input type="text" name="firstName" [(ngModel)]="firstName" required placeholder="First Name"
+                #firstNameRef="ngModel" />
+            @if(firstNameRef.invalid && firstNameRef.touched){
+            <div class="error">
+                First Name is required
+            </div>
+            }
+            
+            <input type="text" name="lastName" [(ngModel)]="lastName" required placeholder="Last Name"
+                #lastNameRef="ngModel" />
+            @if(lastNameRef.invalid && lastNameRef.touched){
+            <div class="error">
+                Last Name is required
+            </div>
+            }
+            
+            <input type="email" name="email" [(ngModel)]="email" required placeholder="Email"
+                #emailRef="ngModel" />
+            @if(emailRef.invalid && emailRef.touched){
+            <div class="error">
+                @if(emailRef.errors?.['required']){
+                    Email is required
+                }
+                @if(emailRef.errors?.['email']){
+                    Please enter a valid email
+                }
+            </div>
+            }
+            
+            <input type="text" name="username" [(ngModel)]="userName" required placeholder="Username"
+                #usernameRef="ngModel" />
+            @if(usernameRef.invalid && usernameRef.touched){
+            <div class="error">
+                Username is required
+            </div>
+            }
+            
+            <input type="password" name="password" [(ngModel)]="password" required placeholder="Password"
+                #passwordRef="ngModel" />
+            @if(passwordRef.invalid && passwordRef.touched){
+            <div class="error">
+                Password is required
+            </div>
+            }
+            
+            <button type="submit" [disabled]="registerForm.invalid">Register</button>
+        </form>
+        <button type="button" (click)="goToLogin()">Already have an account? Sign In</button>
+    </div>
+</div>

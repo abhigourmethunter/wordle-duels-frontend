@@ -31,7 +31,7 @@ export class Register {
       email: this.email
     };
 
-    this.http.post(environment.apiUrl + '/auth/register', payload)
+    this.http.post(environment.apiUrl + '/api/auth/register', payload)
       .subscribe({
         next: (res: any) => {
           alert(res.response);

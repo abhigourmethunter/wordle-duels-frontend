@@ -2,6 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { retryWhen, tap, catchError, delay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class WebSocketService {
 
   constructor() {
     const token = localStorage.getItem('authToken') || '';
-    this.socket = webSocket(`ws://localhost:8080/myHandler?token=${token}`);
+    this.socket = webSocket(environment.apiUrl + `/myHandler?token=${token}`);
   }
 
   public sendMessage(message: any): void {

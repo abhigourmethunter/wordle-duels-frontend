@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class Login {
       password: this.password
     };
 
-    this.http.post('http://localhost:8080/api/auth/authenticate', payload)
+    this.http.post(environment.apiUrl + '/api/auth/authenticate', payload)
       .subscribe({
         next: (res: any) => {
             if (res.token) {

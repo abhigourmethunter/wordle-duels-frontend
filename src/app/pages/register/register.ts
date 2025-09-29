@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -30,7 +31,7 @@ export class Register {
       email: this.email
     };
 
-    this.http.post('http://localhost:8080/api/auth/register', payload)
+    this.http.post(environment.apiUrl + '/auth/register', payload)
       .subscribe({
         next: (res: any) => {
           alert(res.response);
